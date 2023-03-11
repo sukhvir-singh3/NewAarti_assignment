@@ -6,7 +6,7 @@
 *
 * Name:Sukhvir Singh 
 * Student ID:155312218 
-* Date: 17 FEB 
+* Date: 8 MAR 
 *
 * Online (Cyclic) Link: https://zany-ruby-calf-hose.cyclic.app/
 *
@@ -208,7 +208,8 @@ app.get('/students', (req, res) => {
 					res.render('students', { students: studentsArr });
 				})
 				.catch((err)=>{
-					res.render("students", {message: "no results"});				});
+					res.render("students", {message: "no results"});
+								});
 		}
 		else if(program){
 			dataService.getStudentsByProgramCode(program)
@@ -216,7 +217,8 @@ app.get('/students', (req, res) => {
 					res.render('students', { students: studentsArr });
 				})
 				.catch((err)=>{
-					res.render("students", {message: "no results"});				});
+					res.render("students", {message: "no results"});
+								});
 		}
 		else if(credential){
 			dataService.getStudentsByExpectedCredential(credential)
@@ -224,7 +226,8 @@ app.get('/students', (req, res) => {
 					res.render('students', { students: studentsArr });
 				})
 				.catch((err)=>{
-					res.render("students", {message: "no results"});				});
+					res.render("students", {message: "no results"});	
+							});
 		}
 	}
 });
@@ -233,7 +236,6 @@ app.get('/intlstudents', (req, res) => {
 	dataService.getInternationalStudents().then((studentsArr) => {
 		var student = studentsArr.map(function(elem, index){
 			if(elem.isInternationalStudent == true){
-				//return (index + 1) + '. ' + elem.firstName + '<br>';
 				return elem;
 			}
 		});	
@@ -244,7 +246,6 @@ app.get('/intlstudents', (req, res) => {
 app.get('/programs', (req, res)=>{
 		dataService.getPrograms().then((ProgramArr) => {
 			res.render("programs", {programs: ProgramArr});
-		// res.send(ProgramArr);
 	}).catch((err)=>{res.json({ message: err });});
 });
 
